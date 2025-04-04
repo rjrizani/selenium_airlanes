@@ -1,0 +1,23 @@
+
+# Ignore the entire .venv directory
+.venv/
+
+# Ignore all CSV files
+*.csv
+
+proxy_auth_extension/
+
+# Ignore all .pyc files
+*.pyc   
+
+# ignore zip file
+*.zip
+
+#ignore proxy.py
+proxy.py
+
+#ignore output.txt
+output.txt
+
+# Ignore .env file
+.env
