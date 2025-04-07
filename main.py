@@ -215,26 +215,16 @@ def scrape_page(driver, url, max_retries=3):
                 except:
                     results['aircraft_info'].append('N/A')
             
-            # Extract image URLs (from previous implementation)
-            selectors_to_try = [
-                "img.pswp__img",
-                "img[src*='photos']",
-                "img[data-src]",
-                "img"
-            ]
-            
-            for selector in selectors_to_try:
-                try:
-                    images = driver.find_elements(By.CSS_SELECTOR, selector)
-                    urls = [img.get_attribute('src') or img.get_attribute('data-src') for img in images]
-                    results['image_urls'].extend([url for url in urls if url and 'airliners.net' in url])
-                except:
-                    continue
-            
-            # Deduplicate URLs
-            results['image_urls'] = list(set(results['image_urls']))
+         
+            # Extract image URLs using a different approach
+            image_elements = driver.find_elements(By.CSS_SELECTOR, 'img.lazy-load')
+            for img in image_elements:
+                src = img.get_attribute('src')
+                if src and 'airliners.net' in src:
+                    results['image_urls'].append(src)
 
-        
+
+         
             return results
             
         except Exception as e:
@@ -264,7 +254,7 @@ def main():
         print("Proxy IP:", driver.find_element(By.TAG_NAME, 'body').text)
         
         # Scrape airliners.net
-        for i in range(11, 12):
+        for i in range(12, 13):
             url = f"https://www.airliners.net/search?page={i}"
             print(f"Accessing {url}...")
             scraped_data = scrape_page(driver, url)
