@@ -8,8 +8,7 @@ chat client from fiverr.com
 https://drive.google.com/file/d/16X1KPmPwuoJiNMJIxYpb3l3DlZsZkFRL/view?usp=sharing
 
 ## *Solution  :
-Selenium Airlines
-
+Airliners.net have a good antibot feature and  I cannot scrape with beautiful soap and scrapy framework, so I try to scrap it with selenium with Proxy Support and Anti-Detection Measures.
 ## Features
 - **Proxy Support**: Configure and use proxies to avoid IP bans.
 - **Anti-Detection Measures**: Randomize user agents, simulate human-like interactions, and use headless browsing.
